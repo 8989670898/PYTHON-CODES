@@ -1,0 +1,34 @@
+class Solution:
+    def merge(self,arr, l, m, r): 
+        # code here
+        left = arr[l:m+1]
+        right = arr[m+1:r+1]
+        left_index=0
+        right_index=0
+        arr_index = l
+        while left_index<len(left) and right_index<len(right):
+            if left[left_index] < right[right_index]:
+                arr[arr_index] = left[left_index]
+                left_index+=1
+            else:
+                arr[arr_index] = right[right_index]
+                right_index+=1
+            arr_index+=1
+        
+        while left_index < len(left):
+            arr[arr_index] = left[left_index]
+            left_index+=1
+            arr_index+=1
+            
+        while right_index < len(right):
+            arr[arr_index] = right[right_index]
+            right_index+=1
+            arr_index+=1
+        
+    def mergeSort(self,arr, l, r):
+        #code here
+        if l<r:
+            m = (l+r)//2
+            self.mergeSort(arr,l,m)
+            self.mergeSort(arr,m+1,r)
+            self.merge(arr,l,m,r)
