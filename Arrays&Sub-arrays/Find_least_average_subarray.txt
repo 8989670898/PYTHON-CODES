@@ -1,0 +1,18 @@
+nums=[30,20,10]
+k=1
+	def least_average(self, nums, k):
+		# Code here
+		n=len(nums)
+		if n<k:
+		    return 
+		curr_sum = sum(nums[:k])
+		min_sum=curr_sum
+		min_index=0   #Taking min_index var to make note of minimum index 
+		
+		for i in range(k,n):
+		    curr_sum+=nums[i]-nums[i-k]
+		    if curr_sum<min_sum:
+		        min_sum=curr_sum
+		        min_index=i-k+1
+		
+		return min_index+1
